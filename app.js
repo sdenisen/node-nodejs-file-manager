@@ -1,14 +1,35 @@
-import DEFAULT_USER_NAME from "./commands.js";
+import { getGreetingString } from './commands/operation_system/getGreetingString.js';
 
-const parseArgs = () => {
-    let command_line_args = process.argv.slice(2);
-    let user_name = command_line_args.length == 1 ? command_line_args[0].split("=")[1] : DEFAULT_USER_NAME;  
-    console.log(`Welcome to the File Manager, ${user_name}!`);
+class App {
+  constructor(){
+    const cmd_args = process.argv.slice(2);
+    console.log(getGreetingString());
+  }
+  init = () => {
+    console.clear();
+    console.log(getGreetingString());
 
-    while(true){
-        
-        
-    }
-};
+    // const rl = readline.createInterface({
+    //   input: process.stdin,
+    //   output: process.stdout,
+    //   prompt: getPromptStr(this.appData.currDir),
+    // });
 
-parseArgs();
+    // rl.prompt();
+
+    // rl.on('line', async (line) => {
+    //   await this.lineHandler(line);
+    //   rl.prompt();
+    // });
+
+    // process.on('exit', () => {
+    //   console.log(getGoodbyeStr(this.appData.username));
+    // });
+
+    // this.appData.on('currDirChanged', () => {
+    //   rl.setPrompt(getPromptStr(this.appData.currDir));
+    // });
+  };
+}
+
+export const app = new App();
